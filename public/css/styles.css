@@ -1,0 +1,152 @@
+/* ============================================================
+   CampusConnect — shared stylesheet
+   A single theme applied across every page (colours, fonts,
+   header, footer, cards) so the site reads as one project.
+   Built on top of Bootstrap 5; these rules customise it.
+   ============================================================ */
+
+:root {
+  --cc-primary: #4f46e5;      /* indigo  */
+  --cc-primary-dark: #3730a3;
+  --cc-accent: #f59e0b;       /* amber   */
+  --cc-bg: #f7f7fb;
+  --cc-surface: #ffffff;
+  --cc-text: #1f2430;
+  --cc-muted: #5b6475;
+  --cc-border: #e6e8f0;
+  --cc-radius: 14px;
+  --cc-shadow: 0 6px 24px rgba(31, 36, 48, .08);
+}
+
+[data-bs-theme="dark"] {
+  --cc-bg: #12141c;
+  --cc-surface: #1b1e2a;
+  --cc-text: #e9ebf2;
+  --cc-muted: #a2a9bd;
+  --cc-border: #2a2e3d;
+  --cc-shadow: 0 6px 24px rgba(0, 0, 0, .45);
+}
+
+* { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--cc-bg);
+  color: var(--cc-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, .navbar-brand { font-family: 'Sora', 'Inter', sans-serif; font-weight: 700; }
+
+main { flex: 1 0 auto; }
+
+/* --- skip link for keyboard / screen-reader users --- */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--cc-primary);
+  color: #fff;
+  padding: .6rem 1rem;
+  z-index: 2000;
+  border-radius: 0 0 var(--cc-radius) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* --- header / nav --- */
+.navbar.cc-nav {
+  background: var(--cc-surface);
+  border-bottom: 1px solid var(--cc-border);
+  box-shadow: var(--cc-shadow);
+}
+.navbar-brand { color: var(--cc-primary) !important; letter-spacing: -.3px; }
+.navbar-brand .dot { color: var(--cc-accent); }
+.cc-nav .nav-link { color: var(--cc-muted) !important; font-weight: 500; }
+.cc-nav .nav-link.active,
+.cc-nav .nav-link:hover { color: var(--cc-primary) !important; }
+
+/* visible keyboard focus everywhere */
+a:focus-visible, button:focus-visible, .form-control:focus-visible,
+.form-select:focus-visible, .btn:focus-visible {
+  outline: 3px solid var(--cc-accent);
+  outline-offset: 2px;
+}
+
+/* --- hero --- */
+.cc-hero {
+  background: linear-gradient(135deg, var(--cc-primary) 0%, var(--cc-primary-dark) 100%);
+  color: #fff;
+  border-radius: var(--cc-radius);
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.cc-hero::after {
+  content: "";
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(245,158,11,.35), transparent 70%);
+}
+.cc-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+
+/* --- cards --- */
+.cc-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  box-shadow: var(--cc-shadow);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+  height: 100%;
+}
+.cc-card:hover, .cc-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(79, 70, 229, .18);
+}
+.cc-card img { width: 100%; height: 170px; object-fit: cover; }
+.cc-card .badge { background: var(--cc-primary); }
+
+.cat-badge { font-weight: 600; }
+.cat-Workshop  { background: #4f46e5 !important; }
+.cat-Hackathon { background: #db2777 !important; }
+.cat-Cultural  { background: #0891b2 !important; }
+.cat-Seminar   { background: #059669 !important; }
+.cat-Sports    { background: #ea580c !important; }
+
+.seat-bar { height: 8px; border-radius: 6px; background: var(--cc-border); overflow: hidden; }
+.seat-bar > span { display: block; height: 100%; background: var(--cc-accent); }
+
+/* --- forms --- */
+.cc-form-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  box-shadow: var(--cc-shadow);
+}
+.field-error { color: #dc2626; font-size: .85rem; margin-top: .25rem; display: none; }
+.field-error.show { display: block; }
+.form-control.invalid, .form-select.invalid { border-color: #dc2626; }
+
+/* --- footer --- */
+.cc-footer {
+  background: var(--cc-surface);
+  border-top: 1px solid var(--cc-border);
+  color: var(--cc-muted);
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+}
+
+/* --- small helpers --- */
+.text-muted-2 { color: var(--cc-muted); }
+.theme-toggle { border: 1px solid var(--cc-border); background: transparent; color: var(--cc-text); border-radius: 50px; }
+.stat-chip { background: var(--cc-surface); border: 1px solid var(--cc-border); border-radius: var(--cc-radius); padding: 1rem 1.25rem; box-shadow: var(--cc-shadow); }
+.stat-chip .n { font-size: 1.8rem; font-weight: 700; color: var(--cc-primary); line-height: 1; }
+
+/* visually hidden but available to screen readers (fallback if BS class missing) */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}

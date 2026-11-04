@@ -1,0 +1,23 @@
+{
+  "name": "campusconnect",
+  "version": "1.0.0",
+  "description": "CampusConnect - a full-stack campus events & workshops portal (Web Technology Mini Project, ICT 3131)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node db.js --reseed"
+  },
+  "keywords": [
+    "events",
+    "fullstack",
+    "express",
+    "sqlite",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "bootstrap": "^5.3.3",
+    "express": "^4.21.2"
+  }
+}

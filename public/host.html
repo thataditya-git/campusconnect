@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Host an Event — CampusConnect</title>
+  <meta name="description" content="Publish a new campus event or workshop for students to register." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main id="main" class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1 class="h3 mb-1">Host an event</h1>
+        <p class="text-muted-2 mb-4">Fill in the details below. Your event appears on the Events page immediately.</p>
+
+        <div class="cc-form-card p-4">
+          <div id="formAlert" class="alert d-none" role="alert"></div>
+
+          <form id="hostForm" novalidate>
+            <div class="mb-3">
+              <label for="title" class="form-label">Event title</label>
+              <input type="text" class="form-control" id="title" name="title" required minlength="4" />
+              <div class="field-error" data-error-for="title"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" name="category" required>
+                  <option value="">Select…</option>
+                  <option>Workshop</option>
+                  <option>Hackathon</option>
+                  <option>Cultural</option>
+                  <option>Seminar</option>
+                  <option>Sports</option>
+                </select>
+                <div class="field-error" data-error-for="category"></div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="organizer" class="form-label">Organizer / Club</label>
+                <input type="text" class="form-control" id="organizer" name="organizer" required />
+                <div class="field-error" data-error-for="organizer"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" name="description" rows="4" required minlength="20"
+                        aria-describedby="descHelp"></textarea>
+              <div id="descHelp" class="form-text">At least 20 characters. <span id="descCount">0</span> so far.</div>
+              <div class="field-error" data-error-for="description"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="venue" class="form-label">Venue</label>
+                <input type="text" class="form-control" id="venue" name="venue" required />
+                <div class="field-error" data-error-for="venue"></div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required />
+                <div class="field-error" data-error-for="date"></div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="capacity" class="form-label">Capacity</label>
+                <input type="number" class="form-control" id="capacity" name="capacity" required min="1" max="5000" />
+                <div class="field-error" data-error-for="capacity"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="image" class="form-label">Image URL <span class="text-muted-2">(optional)</span></label>
+              <input type="url" class="form-control" id="image" name="image" placeholder="https://…" />
+              <div class="field-error" data-error-for="image"></div>
+            </div>
+
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary" id="hostSubmit">Publish event</button>
+              <button type="reset" class="btn btn-outline-secondary">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/host.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard — CampusConnect</title>
+  <meta name="description" content="Manage events and view registrations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main id="main" class="container my-4">
+    <h1 class="h3 mb-3">Organizer dashboard</h1>
+
+    <!-- live stats -->
+    <section class="row g-3 mb-4" aria-label="Summary statistics">
+      <div class="col-6 col-md-3"><div class="stat-chip"><div class="n" id="statEvents">–</div><div class="text-muted-2 small">Events</div></div></div>
+      <div class="col-6 col-md-3"><div class="stat-chip"><div class="n" id="statRegs">–</div><div class="text-muted-2 small">Registrations</div></div></div>
+      <div class="col-6 col-md-3"><div class="stat-chip"><div class="n" id="statMsgs">–</div><div class="text-muted-2 small">Messages</div></div></div>
+      <div class="col-6 col-md-3"><div class="stat-chip"><div class="n" id="statFill">–</div><div class="text-muted-2 small">Avg. fill</div></div></div>
+    </section>
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tab-events" data-bs-toggle="tab" data-bs-target="#pane-events"
+                type="button" role="tab" aria-controls="pane-events" aria-selected="true">Manage events</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-regs" data-bs-toggle="tab" data-bs-target="#pane-regs"
+                type="button" role="tab" aria-controls="pane-regs" aria-selected="false">Registrations</button>
+      </li>
+    </ul>
+
+    <div class="tab-content pt-3">
+      <!-- events management -->
+      <div class="tab-pane fade show active" id="pane-events" role="tabpanel" aria-labelledby="tab-events">
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <caption class="visually-hidden">List of events with seats and a delete action</caption>
+            <thead>
+              <tr><th scope="col">Title</th><th scope="col">Category</th><th scope="col">Date</th>
+                  <th scope="col">Seats</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr>
+            </thead>
+            <tbody id="eventsBody"><tr><td colspan="5">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- registrations -->
+      <div class="tab-pane fade" id="pane-regs" role="tabpanel" aria-labelledby="tab-regs">
+        <div class="row g-2 align-items-end mb-3">
+          <div class="col-sm-6 col-lg-4">
+            <label for="regFilter" class="form-label">Filter by event</label>
+            <select id="regFilter" class="form-select"><option value="">All events</option></select>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <caption class="visually-hidden">List of student registrations</caption>
+            <thead>
+              <tr><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Reg. No.</th>
+                  <th scope="col">Year</th><th scope="col">Event</th></tr>
+            </thead>
+            <tbody id="regsBody"><tr><td colspan="5">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
